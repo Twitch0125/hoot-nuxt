@@ -1,9 +1,20 @@
+<script>
+import TheNavbar from '~/components/TheNavbar.vue'
+export default {
+  components: { TheNavbar }
+}
+</script>
 <template>
-  <div>
-    <nuxt />
+  <div id="main">
+    <TheNavbar />
+    <div class="container mx-auto">
+      <nuxt />
+    </div>
   </div>
 </template>
 
-<script>
-export default {}
-</script>
+<style scoped>
+#main {
+  background-color: #f4fbfa;
+}
+</style>

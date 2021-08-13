@@ -1,8 +1,3 @@
-import tailwindTypography from '@tailwindcss/typography'
-import tailwindForms from '@tailwindcss/forms'
-import tailwindLineClamp from '@tailwindcss/line-clamp'
-import tailwindAspectRatio from '@tailwindcss/aspect-ratio'
-import defaultTheme from 'tailwindcss/defaultTheme'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -19,7 +14,7 @@ export default {
     ]
   },
   publicRuntimeConfig: {
-    lotide: process.env.LOTIDE
+    lotide: process.env.LOTIDE || 'http://localhost:3333/api'
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -38,7 +33,8 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/composition-api/module'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -59,20 +55,6 @@ export default {
   build: {},
 
   tailwindcss: {
-    config: {
-      plugins: [
-        tailwindTypography,
-        tailwindForms,
-        tailwindLineClamp,
-        tailwindAspectRatio
-      ],
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter Var', ...defaultTheme.fontFamily.sans]
-          }
-        }
-      }
-    }
+    configPath: 'tailwind.config.js'
   }
 }
