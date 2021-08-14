@@ -14,14 +14,21 @@ export default {
 </script>
 <template>
   <div class="flex flex-col max-w-4xl gap-4 pt-5 mx-auto">
+    <h1 class="text-2xl font-semibold">Posts from the Whole Network</h1>
     <div
       v-for="post in posts"
       :key="post.id"
       class="flex flex-col gap-2 px-4 py-2 bg-white rounded shadow"
     >
       <div class="flex flex-col">
-        <div class="text-sm text-gray-600">
-          {{ post.community.name }}@{{ post.community.host }}
+        <div class="flex items-center">
+          <div class="text-sm text-gray-600">
+            {{ post.community.name }}@{{ post.community.host }}
+          </div>
+          <div class="flex-1"></div>
+          <a class="text-sm text-teal-700" :href="post.href">
+            {{ post.href }}
+          </a>
         </div>
         <nuxt-link
           :to="`/posts/${post.id}`"

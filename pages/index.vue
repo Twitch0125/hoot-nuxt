@@ -19,5 +19,9 @@ export default defineComponent({
 </script>
 
 <template>
-  <ThePostsList v-bind="{ posts }" />
+  <section>
+    <div>
+      <ThePostsList v-bind="{ posts }" />
+    </div>
+  </section>
 </template>

@@ -1,3 +1,6 @@
 * {
   @apply font-sans;
 }
+body {
+  background-color: #f4fbfa;
+}
