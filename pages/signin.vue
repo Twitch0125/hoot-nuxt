@@ -1,6 +1,21 @@
 <script>
+import { userModule } from '~/store/user'
 export default {
-  layout: 'account'
+  layout: 'account',
+  data() {
+    return { username: null, password: null, errors: [] }
+  },
+  methods: {
+    ...userModule.mapActions(['signin']),
+    async submit() {
+      const body = { username: this.username, password: this.password }
+      const [, err] = await this.signin(body)
+      if (err) {
+        this.errors.push(await err.response.text())
+      }
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 
@@ -37,13 +52,14 @@ export default {
           Sign in to your account
         </h2>
       </div>
-      <form class="mt-8 space-y-6" action="#" method="POST">
+      <form class="mt-8 space-y-6" @submit.prevent="submit">
         <input type="hidden" name="remember" value="true" />
         <div class="-space-y-px rounded-md shadow-sm">
           <div>
             <label for="username" class="sr-only">Username</label>
             <BaseInput
               id="username"
+              v-model="username"
               name="username"
               type="text"
               autocomplete="username"
@@ -56,6 +72,7 @@ export default {
             <label for="password" class="sr-only">Password</label>
             <BaseInput
               id="password"
+              v-model="password"
               name="password"
               type="password"
               autocomplete="current-password"
@@ -80,7 +97,19 @@ export default {
           </a>
         </div>
 
-        <div class="flex items-center justify-between"></div>
+        <div
+          v-for="(error, i) in errors"
+          :key="i"
+          class="
+            text-error-700 text-base
+            font-medium
+            p-4
+            bg-error-100
+            rounded-sm
+          "
+        >
+          {{ error }}
+        </div>
 
         <div class="flex flex-col gap-2">
           <button

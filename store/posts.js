@@ -1,5 +1,5 @@
 import { createNamespacedHelpers } from 'vuex'
-import { asyncFunc } from '~/assets/utils'
+import { asyncFunc } from '~/assets/async-func'
 import { createMutations } from '~/assets/vuex-helpers'
 export const namespace = 'posts'
 export const postsModule = createNamespacedHelpers(namespace)

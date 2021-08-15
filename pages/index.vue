@@ -1,21 +1,14 @@
 <script>
-import {
-  computed,
-  defineComponent,
-  useContext,
-  useFetch
-} from '@nuxtjs/composition-api'
-export default defineComponent({
-  setup() {
-    const { store } = useContext()
-    const posts = computed(() => store.state.posts.posts)
-    useFetch(async () => {
-      await store.dispatch('posts/getPosts')
-    })
-    return { posts }
+import { postsModule } from '~/store/posts'
+
+export default {
+  async asyncData({ store }) {
+    await store.dispatch('posts/getPosts')
   },
-  head: {}
-})
+  computed: {
+    ...postsModule.mapState(['posts'])
+  }
+}
 </script>
 
 <template>

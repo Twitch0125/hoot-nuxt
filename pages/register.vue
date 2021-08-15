@@ -1,6 +1,26 @@
 <script>
+import { userModule } from '~/store/user'
+
 export default {
-  layout: 'account'
+  layout: 'account',
+  data() {
+    return { username: null, password: null, email_address: null, errors: [] }
+  },
+  methods: {
+    ...userModule.mapActions(['register']),
+    async submit() {
+      const body = { username: this.username, password: this.password }
+      if (this.email_address) {
+        body.email_address = this.email_address
+      }
+      const [, err] = await this.register(body)
+      if (err) {
+        this.errors.push(await err.response.text())
+        return
+      }
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 
@@ -37,17 +57,14 @@ export default {
           Register your account
         </h2>
       </div>
-      <form
-        class="mt-8 space-y-6"
-        :action="`${$config.lotide}/users`"
-        method="POST"
-      >
+      <form class="mt-8 space-y-6" @submit.prevent="submit">
         <input type="hidden" name="remember" value="true" />
         <div class="rounded-md shadow-sm flex flex-col gap-6">
           <div>
             <label for="password" class="text-white">Password</label>
             <BaseInput
               id="password"
+              v-model="password"
               name="password"
               type="password"
               autocomplete="new-password"
@@ -56,7 +73,13 @@ export default {
           </div>
           <div>
             <label for="username" class="text-white">Username</label>
-            <BaseInput id="username" name="username" autocomplete="username" />
+            <BaseInput
+              id="username"
+              v-model="username"
+              name="username"
+              required
+              autocomplete="username"
+            />
           </div>
         </div>
         <div>
@@ -96,14 +119,28 @@ export default {
 
             <BaseInput
               id="email-address"
-              name="email"
+              v-model="email_address"
+              name="email_address"
               type="email"
               autocomplete="email"
               placeholder="email@example.com"
               class="pl-10"
-              required
             />
           </div>
+        </div>
+
+        <div
+          v-for="(error, i) in errors"
+          :key="i"
+          class="
+            text-error-700 text-base
+            font-medium
+            p-4
+            bg-error-100
+            rounded-sm
+          "
+        >
+          {{ error }}
         </div>
 
         <div class="flex flex-col gap-2">

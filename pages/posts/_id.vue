@@ -1,29 +1,20 @@
 <script>
-import {
-  defineComponent,
-  ref,
-  useContext,
-  useFetch,
-  useRoute
-} from '@nuxtjs/composition-api'
-import { asyncFunc } from '~/assets/utils'
+import { asyncFunc } from '~/assets/async-func'
+export default {
+  async asyncData({ $http, $config, params }) {
+    const post = {}
 
-export default defineComponent({
-  setup() {
-    const { $http, $config } = useContext()
-    const route = useRoute()
-    const post = ref({})
+    const [data, err] = await asyncFunc(
+      $http.$get($config.lotide + `/posts/${params.id}`)
+    )
+    if (!err) post.value = data
+    else console.error(err)
 
-    useFetch(async () => {
-      const [data, err] = await asyncFunc(
-        $http.$get($config.lotide + `/posts/${route.value.params.id}`)
-      )
-      if (!err) post.value = data
-      else console.error(err)
-    })
-    return { post }
+    return {
+      post
+    }
   }
-})
+}
 </script>
 
 <template>

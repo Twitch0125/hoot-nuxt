@@ -1,3 +1,13 @@
+<script>
+export default {
+  props: {
+    value: {
+      type: String,
+      default: null
+    }
+  }
+}
+</script>
 <template>
   <input
     class="
@@ -13,6 +23,9 @@
       sm:text-sm
     "
     v-bind="$attrs"
-    v-on="$listeners"
+    v-on="{
+      ...$listeners,
+      input: ($event) => $emit('input', $event.target.value)
+    }"
   />
 </template>

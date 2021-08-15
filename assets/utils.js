@@ -1,13 +1,3 @@
-/* eslint-disable no-console */
-export const asyncFunc = async (promise) => {
-  try {
-    const data = await promise
-    return [data, null]
-  } catch (err) {
-    console.error(err)
-    return [null, err]
-  }
-}
 export const findTimeDifference = (date) => {
   const now = new Date()
   const differenceSeconds = Math.floor((now - new Date(date)) / 1000)

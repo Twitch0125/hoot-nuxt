@@ -33,15 +33,15 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/composition-api/module'
+    '@nuxtjs/tailwindcss'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxt/http'
+    '@nuxt/http',
+    '@nuxtjs/universal-storage'
   ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -53,6 +53,11 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+  storage: {
+    initialState: {
+      token: null
+    }
+  },
 
   tailwindcss: {
     configPath: 'tailwind.config.js'
