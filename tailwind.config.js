@@ -9,12 +9,10 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       black: colors.black,
-      teal: colors.teal,
+      primary: colors.teal,
       white: colors.white,
       gray: colors.blueGray,
-      red: colors.red,
-      yellow: colors.amber,
-      blue: colors.blue
+      accent: colors.emerald
     },
     extend: {
       fontFamily: {

@@ -1,0 +1,15 @@
+<template>
+  <input
+    type="checkbox"
+    class="
+      w-4
+      h-4
+      text-primary-900
+      border-gray-300
+      rounded
+      focus:ring-primary-700
+    "
+    v-bind="$attrs"
+    v-on="$listeners"
+  />
+</template>

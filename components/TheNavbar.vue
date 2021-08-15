@@ -1,16 +1,37 @@
 <template>
-  <nav class="flex flex-col w-full bg-teal-600">
+  <nav class="flex flex-col w-full bg-primary-600">
     <div class="flex flex-col items-center px-4 py-3 md:flex-row">
       <nuxt-link
         to="/"
-        class="p-2 mb-2 text-2xl font-bold tracking-wide text-white transition-colors duration-150 ease-in-out rounded  sm:mb-0 hover:bg-white hover:text-teal-900"
+        class="
+          p-2
+          mb-2
+          text-2xl
+          font-bold
+          tracking-wide
+          text-white
+          transition-colors
+          duration-150
+          ease-in-out
+          rounded
+          sm:mb-0
+          hover:bg-white hover:text-primary-900
+        "
         >HOOT</nuxt-link
       >
       <div class="mx-auto">
         <label for="search" class="sr-only">Search Hoot</label>
         <div class="relative rounded-md shadow-sm">
           <div
-            class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none "
+            class="
+              absolute
+              inset-y-0
+              left-0
+              flex
+              items-center
+              pl-3
+              pointer-events-none
+            "
           >
             <svg
               class="w-5 h-5 text-gray-400"
@@ -29,26 +50,46 @@
             id="search"
             type="text"
             name="search"
-            class="block w-full pl-10 border-none rounded-md  focus:ring-teal-400 focus:border-teal-400 sm:text-sm"
+            class="
+              block
+              w-full
+              pl-10
+              border-none
+              rounded-md
+              focus:ring-primary-400 focus:border-primary-400
+              sm:text-sm
+            "
             placeholder="Search HOOT"
           />
         </div>
       </div>
+      <TheNavbarAvatar />
     </div>
     <div class="relative px-4">
       <div class="inset-0 flex items-center" aria-hidden="true">
-        <div class="w-full border-t border-teal-500" />
+        <div class="w-full border-t border-primary-500" />
       </div>
     </div>
     <div class="flex flex-col items-center gap-8 px-16 py-3 sm:flex-row">
       <span class="text-base font-bold text-white"> Communities </span>
       <div class="hidden sm:block">
         <button
-          class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white bg-teal-700 rounded "
+          class="
+            flex
+            items-center
+            gap-2
+            px-3
+            py-2
+            text-sm
+            font-medium
+            text-white
+            bg-primary-700
+            rounded
+          "
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5 text-teal-100"
+            class="w-5 h-5 text-primary-100"
             viewBox="0 0 20 20"
             fill="currentColor"
           >

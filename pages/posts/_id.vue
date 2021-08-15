@@ -28,7 +28,15 @@ export default defineComponent({
 
 <template>
   <section
-    class="max-w-4xl p-4 mx-auto break-words bg-white  prose-teal sm:mt-5 sm:shadow sm:rounded"
+    class="
+      max-w-4xl
+      p-4
+      mx-auto
+      break-words
+      bg-white
+      prose-primary
+      sm:mt-5 sm:shadow sm:rounded
+    "
   >
     <h1 class="text-lg font-semibold md:text-xl">{{ post.title }}</h1>
     <div

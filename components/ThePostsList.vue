@@ -26,13 +26,13 @@ export default {
             {{ post.community.name }}@{{ post.community.host }}
           </div>
           <div class="flex-1"></div>
-          <a class="text-sm text-teal-700" :href="post.href">
+          <a class="text-sm text-primary-700" :href="post.href">
             {{ post.href }}
           </a>
         </div>
         <nuxt-link
           :to="`/posts/${post.id}`"
-          class="text-base font-medium text-teal-900 hover:text-teal-700"
+          class="text-base font-medium text-primary-900 hover:text-primary-700"
           @hover="$emit('hover', post.id)"
         >
           {{ post.title }}
