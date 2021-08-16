@@ -1,17 +1,17 @@
+/* eslint-disable no-console */
 <script>
 import { asyncFunc } from '~/assets/async-func'
 export default {
   async asyncData({ $http, $config, params }) {
-    const post = {}
-
     const [data, err] = await asyncFunc(
       $http.$get($config.lotide + `/posts/${params.id}`)
     )
-    if (!err) post.value = data
-    else console.error(err)
+    if (err) {
+      console.error(err)
+    }
 
     return {
-      post
+      post: data
     }
   }
 }
@@ -30,9 +30,6 @@ export default {
     "
   >
     <h1 class="text-lg font-semibold md:text-xl">{{ post.title }}</h1>
-    <div
-      class="prose md:prose-lg max-w-none"
-      v-html="post.content_html || post.content_text"
-    ></div>
+    <div class="prose md:prose-lg max-w-none" v-html="post.content_html"></div>
   </section>
 </template>

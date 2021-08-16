@@ -3,7 +3,7 @@ export default {
   props: {
     value: {
       type: Boolean,
-      default: false
+      default: undefined
     }
   },
   data() {
@@ -11,13 +11,25 @@ export default {
       isOpen: false
     }
   },
-  mounted() {
-    this.isOpen = this.value
+  watch: {
+    value(newVal) {
+      this.isOpen = newVal
+    }
   },
   methods: {
     open() {
-      this.isOpen = true
-      this.$emit('input', this.isOpen)
+      if (this.value !== undefined) {
+        this.$emit('input', true)
+      } else {
+        this.isOpen = true
+      }
+    },
+    close() {
+      if (this.value !== undefined) {
+        this.$emit('input', false)
+      } else {
+        this.isOpen = true
+      }
     }
   }
 }
@@ -26,6 +38,10 @@ export default {
 <template>
   <div v-bind="$attrs" v-on="$listeners">
     <slot name="activator" v-bind="{ on: { click: open } }"></slot>
-    <slot v-if="isOpen" name="default" />
+    <BaseMenuTransition>
+      <div v-if="isOpen" v-click-outside="close">
+        <slot name="default" />
+      </div>
+    </BaseMenuTransition>
   </div>
 </template>

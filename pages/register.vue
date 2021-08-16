@@ -61,17 +61,6 @@ export default {
         <input type="hidden" name="remember" value="true" />
         <div class="rounded-md shadow-sm flex flex-col gap-6">
           <div>
-            <label for="password" class="text-white">Password</label>
-            <BaseInput
-              id="password"
-              v-model="password"
-              name="password"
-              type="password"
-              autocomplete="new-password"
-              required
-            />
-          </div>
-          <div>
             <label for="username" class="text-white">Username</label>
             <BaseInput
               id="username"
@@ -81,6 +70,17 @@ export default {
               autocomplete="username"
             />
           </div>
+        </div>
+        <div>
+          <label for="password" class="text-white">Password</label>
+          <BaseInput
+            id="password"
+            v-model="password"
+            name="password"
+            type="password"
+            autocomplete="new-password"
+            required
+          />
         </div>
         <div>
           <div class="flex justify-between">

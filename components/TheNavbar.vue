@@ -65,8 +65,8 @@
       </div>
       <TheNavbarAvatar />
     </div>
-    <div class="relative px-4">
-      <div class="inset-0 flex items-center" aria-hidden="true">
+    <div class="px-4">
+      <div class="flex items-center" aria-hidden="true">
         <div class="w-full border-t border-primary-500" />
       </div>
     </div>
