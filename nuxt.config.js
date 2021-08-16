@@ -41,8 +41,17 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxt/http',
-    '@nuxtjs/universal-storage'
+    '@nuxtjs/universal-storage',
+    '@nuxtjs/markdownit'
   ],
+
+  markdownit: {
+    preset: 'default',
+    linkify: true,
+    breaks: true,
+    html: true
+    // use: ['markdown-it-div', 'markdown-it-attrs']
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
