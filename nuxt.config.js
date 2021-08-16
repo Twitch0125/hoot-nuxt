@@ -16,7 +16,7 @@ export default {
   publicRuntimeConfig: {
     lotide: process.env.LOTIDE || 'http://localhost:3333/api'
   },
-
+  srcDir: './',
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['@/assets/styles.css'],
 

@@ -1,13 +1,14 @@
-'use strict'
 const { loadNuxt } = require('nuxt')
 const serverless = require('serverless-http')
-const koa = require('koa')
-const app = koa()
+const app = require('express')()
 // Get a ready to use Nuxt instance
 
-exports.handler = async (...params) => {
-  const nuxt = await loadNuxt('start')
+exports.handler = async (event, context) => {
+  // const nuxt = new Nuxt('../../nuxt.config.js')
+  const nuxt = loadNuxt('start')
   app.use(nuxt.render)
+  const handler = serverless(app)
 
-  return (...params) => serverless(app)
+  const result = await handler(event, context)
+  return result
 }

@@ -24,7 +24,7 @@
     "@tailwindcss/line-clamp": "^0.2.1",
     "@tailwindcss/typography": "^0.4.1",
     "core-js": "^3.15.1",
-    "koa": "^2.13.1",
+    "express": "^4.17.1",
     "nuxt": "^2.15.7",
     "serverless-http": "^2.7.0",
     "stackedit-js": "^1.0.7",
