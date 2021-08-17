@@ -66,7 +66,7 @@ export default {
     initialState: {
       token: null
     }
-  },
+  }, 
 
   tailwindcss: {
     configPath: 'tailwind.config.js'
