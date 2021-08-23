@@ -73,7 +73,7 @@
     <div class="flex flex-col items-center gap-8 px-16 py-3 sm:flex-row">
       <span class="text-base font-bold text-white"> Communities </span>
       <div class="hidden sm:block">
-        <button
+        <nuxt-link
           class="
             flex
             items-center
@@ -86,6 +86,7 @@
             bg-primary-700
             rounded
           "
+          to="/communities/new"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +101,7 @@
             />
           </svg>
           Add Communities
-        </button>
+        </nuxt-link>
       </div>
     </div>
   </nav>
