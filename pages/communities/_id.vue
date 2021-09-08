@@ -1,9 +1,9 @@
 <script>
 import { asyncFunc } from '~/assets/async-func'
 export default {
-  async asyncData({ $http, $config, params }) {
+  async asyncData({ $axios, $config, params }) {
     const [community, err] = await asyncFunc(
-      $http.$get(`${$config.lotide}/communities/${params.id}`)
+      $axios.$get(`${$config.lotide}/communities/${params.id}`)
     )
     if (err) {
       console.error(err)
