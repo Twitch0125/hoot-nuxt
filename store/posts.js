@@ -15,7 +15,6 @@ export const actions = {
     const [posts, err] = await asyncFunc(
       this.$axios.$get(`${this.$config.lotide}/posts`)
     )
-    console.log(posts)
     if (!err) {
       commit('posts', posts)
     }
