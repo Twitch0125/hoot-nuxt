@@ -8,7 +8,7 @@ export default {
   methods: {
     async createCommunity() {
       const [data, err] = await asyncFunc(
-        this.$http.$post(this.$config.lotide + '/communities', {
+        this.$axios.$post(this.$config.lotide + '/communities', {
           name: this.name,
         })
       )

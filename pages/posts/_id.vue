@@ -4,9 +4,9 @@ import { asyncFunc } from '~/assets/async-func'
 import { findTimeDifference } from '~/assets/utils'
 
 export default {
-  async asyncData({ $http, $config, params }) {
+  async asyncData({ $axios, $config, params }) {
     const [data, err] = await asyncFunc(
-      $http.$get($config.lotide + `/posts/${params.id}`)
+      $axios.$get($config.lotide + `/posts/${params.id}`)
     )
     if (err) {
       console.error(err)

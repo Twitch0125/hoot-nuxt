@@ -10,7 +10,7 @@ export const state = () => ({
   isSiteAdmin: false,
   hasUnreadNotification: false,
   token: null,
-  loading: false
+  loading: false,
 })
 
 export const mutations = createMutations(
@@ -29,17 +29,17 @@ export const actions = {
       body.email_address = email_address
     }
     const [data, err] = await asyncFunc(
-      this.$http.$post(`${this.$config.lotide}/users`, body)
+      this.$axios.$post(`${this.$config.lotide}/users`, body)
     )
     if (data) {
       const {
         id,
         username: usernameData,
         is_site_admin,
-        has_unread_notification
+        has_unread_notification,
       } = data.user
       this.$storage.setUniversal('token', data.token)
-      this.$http.setToken(data.token, 'Bearer')
+      this.$axios.setToken(data.token, 'Bearer')
       commit('token', data.token)
       commit('id', id)
       commit('username', usernameData)
@@ -50,17 +50,17 @@ export const actions = {
   },
   async signin({ commit }, { username, password }) {
     const [data, err] = await asyncFunc(
-      this.$http.$post(`${this.$config.lotide}/logins`, { username, password })
+      this.$axios.$post(`${this.$config.lotide}/logins`, { username, password })
     )
     if (data) {
       const {
         id,
         username: usernameData,
         is_site_admin,
-        has_unread_notification
+        has_unread_notification,
       } = data.user
       this.$storage.setUniversal('token', data.token)
-      this.$http.setToken(data.token, 'Bearer')
+      this.$axios.setToken(data.token, 'Bearer')
       commit('token', data.token)
       commit('id', id)
       commit('username', usernameData)
@@ -72,14 +72,14 @@ export const actions = {
   // should be called when the user's token has been saved
   async refresh({ commit }) {
     const [data, err] = await asyncFunc(
-      this.$http.$get(`${this.$config.lotide}/logins/~current`)
+      this.$axios.$get(`${this.$config.lotide}/logins/~current`)
     )
     if (data) {
       const {
         id,
         username: usernameData,
         is_site_admin,
-        has_unread_notification
+        has_unread_notification,
       } = data.user
       commit('id', id)
       commit('username', usernameData)
@@ -90,11 +90,11 @@ export const actions = {
   },
   async signout({ commit }) {
     const [data, err] = await asyncFunc(
-      this.$http.$delete(`${this.$config.lotide}/logins/~current`)
+      this.$axios.$delete(`${this.$config.lotide}/logins/~current`)
     )
     if (!err) {
       this.$storage.removeUniversal('token')
-      this.$http.setToken(false)
+      this.$axios.setToken(false)
       commit('token', null)
       commit('id', null)
       commit('username', null)
@@ -102,5 +102,5 @@ export const actions = {
       commit('hasUnreadNotification', false)
     }
     return [data, err]
-  }
+  },
 }

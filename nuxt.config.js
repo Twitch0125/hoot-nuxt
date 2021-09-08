@@ -6,15 +6,15 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' }
-    ]
+      { rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' },
+    ],
   },
   publicRuntimeConfig: {
-    lotide: process.env.LOTIDE || 'http://localhost:3333/api'
+    lotide: process.env.LOTIDE || 'http://localhost:3333/api',
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -33,42 +33,42 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxt/http',
     '@nuxtjs/universal-storage',
-    '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit',
+    '@nuxtjs/axios',
   ],
 
   markdownit: {
     preset: 'default',
     linkify: true,
     breaks: true,
-    html: true
+    html: true,
     // use: ['markdown-it-div', 'markdown-it-attrs']
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
-    }
+      lang: 'en',
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   storage: {
     initialState: {
-      token: null
-    }
-  }, 
+      token: null,
+    },
+  },
 
   tailwindcss: {
-    configPath: 'tailwind.config.js'
-  }
+    configPath: 'tailwind.config.js',
+  },
 }
